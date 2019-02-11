@@ -1,7 +1,12 @@
+import { FeedComponent } from './components/feed/feed.component';
+import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'feed', component: FeedComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
