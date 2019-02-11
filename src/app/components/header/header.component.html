@@ -18,6 +18,8 @@
           </svg>
         </a>
         <a class="btn btn-sm btn-outline-secondary" 
+        routerLink="cart" >Cart</a>
+        <a class="btn btn-sm btn-outline-secondary" 
         routerLink="" *ngIf="!user">SignIn</a>
         <a (click)="logout()" 
         class="btn btn-sm btn-outline-secondary" *ngIf="user">Logout</a>

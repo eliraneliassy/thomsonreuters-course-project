@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-item',
@@ -9,9 +10,15 @@ export class ItemComponent implements OnInit {
 
   @Input() item: Item;
 
+  @Output() addToCart: EventEmitter<Item> = new EventEmitter<Item>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  clicked() {
+    this.addToCart.emit(this.item);
   }
 
 }
