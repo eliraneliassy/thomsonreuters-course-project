@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './store/app.effects';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { environment } from 'src/environments/environment';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

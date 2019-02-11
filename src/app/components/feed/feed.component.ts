@@ -2,6 +2,9 @@ import { CartService } from './../../services/cart.service';
 import { FeedService } from './../../services/feed.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { State } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store';
 
 @Component({
   selector: 'app-feed',
@@ -11,11 +14,16 @@ import { Observable } from 'rxjs';
 export class FeedComponent implements OnInit {
 
   items$: Observable<Item[]>;
-  constructor(private feedService: FeedService, private cartService: CartService) { }
+  items: Item[];
+  constructor(private store: Store<State>, private cartService: CartService) { }
 
   ngOnInit() {
-    this.items$ = this.feedService.getItems(0);
+    // this.items$ = this.feedService.getItems(0);
     // this.feedService.getItems(0).subscribe((items: Item[]) => this.items = items);
+    this.store.dispatch(new fromApp.GetFeed());
+
+    this.store.subscribe((store) => this.items = store.app.feedItems);
+
 
   }
   addToCart(item: Item) {
