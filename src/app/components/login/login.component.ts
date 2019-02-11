@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       'password': new FormControl()
     });
 
-    this.store.subscribe(console.log);
+    // this.store.subscribe(console.log);
   }
 
   login() {

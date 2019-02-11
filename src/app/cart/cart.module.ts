@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { CartRoutingModule } from './cart-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromCart from './cart.reducer';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     CartRoutingModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature('cart', fromCart.reducer)
 
   ]
 })

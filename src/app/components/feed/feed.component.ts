@@ -1,3 +1,4 @@
+import { AddToCart } from './../../cart/cart.actions';
 import { CartService } from './../../services/cart.service';
 import { FeedService } from './../../services/feed.service';
 import { Component, OnInit } from '@angular/core';
@@ -29,7 +30,7 @@ export class FeedComponent implements OnInit {
 
   }
   addToCart(item: Item) {
-    this.cartService.addToCart(item);
+    this.store.dispatch(new AddToCart(item));
   }
 
 }
