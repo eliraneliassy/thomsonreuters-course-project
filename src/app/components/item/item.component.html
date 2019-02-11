@@ -1,0 +1,12 @@
+<div>
+  <div class="title">
+    {{item.description}}
+  </div>
+  <div class="price">
+    {{(item.price/100) | currency}}
+  </div>
+  
+  <div class="image">
+    <img [src]="item.imageUrl">
+  </div>
+</div>
