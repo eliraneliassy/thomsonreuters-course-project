@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/reducers';
+import * as fromApp from '../../store';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router,
+    private store: Store<State>) { }
 
   ngOnInit() {
 
@@ -21,10 +25,13 @@ export class LoginComponent implements OnInit {
       'email': new FormControl(null),
       'password': new FormControl()
     });
+
+    this.store.subscribe(console.log);
   }
 
   login() {
-    this.authService.setUser(this.form.value['email']);
+    this.store.dispatch(new fromApp.UserLogin(this.form.value['email']));
+    // this.authService.setUser(this.form.value['email']);
     this.router.navigate(['feed']);
   }
 

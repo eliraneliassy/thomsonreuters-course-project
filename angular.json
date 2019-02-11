@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "tr-course-project"
+  "defaultProject": "tr-course-project",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
