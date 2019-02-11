@@ -5,3 +5,6 @@ export const selectAppState = (state: State) => state.app;
 
 export const getUserName = createSelector(selectAppState,
     (appSate: AppState) => appSate.userName);
+
+export const getFeed = createSelector(selectAppState,
+    (appState: AppState) => appState.feedItems);

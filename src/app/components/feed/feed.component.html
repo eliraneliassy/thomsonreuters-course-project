@@ -1,4 +1,4 @@
 <div class="container">
-  <app-item *ngFor="let item of items" [item]="item"
+  <app-item *ngFor="let item of (items$ | async)" [item]="item"
   (addToCart)="addToCart($event)"></app-item>
 </div>
