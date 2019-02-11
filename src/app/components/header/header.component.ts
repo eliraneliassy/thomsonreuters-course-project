@@ -1,5 +1,10 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { State } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { getUserName } from 'src/app/store/app.selectors';
+import { Observable, from } from 'rxjs';
+import { UserLogout } from 'src/app/store';
 
 @Component({
   selector: 'app-header',
@@ -8,17 +13,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  user: string;
+  user$: Observable<string>;
 
-  constructor(private authService: AuthService) { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.authService.getUser()
-      .subscribe((userName: string) => this.user = userName);
+    this.user$ = this.store.select(getUserName);
   }
 
   logout() {
-    this.authService.logout();
+    this.store.dispatch(new UserLogout());
   }
 
 }
